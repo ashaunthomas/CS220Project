@@ -11,7 +11,9 @@ public class Game extends JFrame
 	private void initUI()
 	{
 		setTitle(title);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		setSize(500,281);
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
