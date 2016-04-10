@@ -16,6 +16,7 @@ public class Game extends JFrame
 		setVisible(true);
 	}
 	
+	//blah
 	public static void main(String[]args)
 	{
 		EventQueue.invokeLater(new Runnable() 
