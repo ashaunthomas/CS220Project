@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial") //Gave weird warning, I'll check that out later
 public class Game extends JFrame 
 {
+	private GameCanvas panel;
 	private int gameState;
 	/*
 	 * States:
@@ -28,14 +29,11 @@ public class Game extends JFrame
 		//set state to 2 so i could test pong game engine
 		setGameState(2);
 		
-		EventQueue.invokeLater(new Runnable() 
-				{
-					public void run()
-					{
-						Game thisGame = new Game();
-						thisGame.setVisible(true);
-					}
-				});
+		this.setVisible(true);
+		
+		while(true){
+			panel.repaint()
+		}
 	}
 	
 	private void initUI()

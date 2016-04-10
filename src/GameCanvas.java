@@ -30,7 +30,6 @@ public class GameCanvas extends JPanel{
 	@Override
 	public void paint(Graphics g) 
 	{
-		//animate.textBox("Hello there!", g);
 
 		switch(main.getGameState())
 		{

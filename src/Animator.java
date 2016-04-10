@@ -26,7 +26,7 @@ public final class Animator {
 	
 	public void mainGame()
 	{
-		
+		g.drawRect(10, 10, 10, 10);
 	}
 	
 }

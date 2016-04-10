@@ -1,10 +1,14 @@
 
 public class Paddle implements PaddleInterface{
 	int x,y,id,length;
-	public Paddle(int x,int id){
-		this.x=x;
-		this.y=(Game.HEIGHT/2)-(length/2);
-		this.id=id;
+	Game main;
+	
+	public Paddle(int x, int id, Game main){
+		this.main = main;
+		setX(x);
+		setY((main.getHeight()/2)-(length/2));
+		setID(id);
+		setLength(length);
 	}
 	public void MoveUp() {
 		// TODO Auto-generated method stub
@@ -38,8 +42,8 @@ public class Paddle implements PaddleInterface{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public void setLength() {
-		// TODO Auto-generated method stub
+	public void setLength(int length) {
+		this.length = length;
 		
 	}
 	public int getLength() {
@@ -61,6 +65,10 @@ public class Paddle implements PaddleInterface{
 	public int getRotation() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	public void setLength() {
+		// TODO Auto-generated method stub
+		
 	}
 		
 	
