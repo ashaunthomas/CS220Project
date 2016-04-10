@@ -32,7 +32,6 @@ public class KeyManager implements KeyListener{
 		return keyPressed[key];
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 			if(!getIsPressing(key)){
@@ -41,14 +40,12 @@ public class KeyManager implements KeyListener{
 		setIsPressing(true, key);
 	}
 
-	@Override
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 		recieveKeyRelease(key);
 		setIsPressing(false, key);
 	}
 
-	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		

@@ -19,8 +19,8 @@ public class Game extends JFrame
 	
 	//16:9 dimensions for jframe
 	
-	protected final static int HEIGHT= 500;
-	protected final static int WIDTH = 281;
+	protected final int HEIGHT= 500;
+	protected final int WIDTH = 281;
 	
 	Game(){
 		initUI();
@@ -30,7 +30,6 @@ public class Game extends JFrame
 		
 		EventQueue.invokeLater(new Runnable() 
 				{
-					@Override
 					public void run()
 					{
 						Game thisGame = new Game();
