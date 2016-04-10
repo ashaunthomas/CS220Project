@@ -8,8 +8,8 @@ public class Game extends JFrame
 	
 	//16:9 dimensions for jframe
 	
-	protected final int HEIGHT= 500;
-	protected final int WIDTH = 281;
+	protected final static int HEIGHT= 500;
+	protected final static int WIDTH = 281;
 	
 	public Game() {initUI();};
 	
