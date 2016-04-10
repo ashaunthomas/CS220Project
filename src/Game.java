@@ -10,6 +10,7 @@ public class Game extends JFrame
 	
 	protected final int HEIGHT= 500;
 	protected final int WIDTH = 281;
+	
 	public Game() {initUI();};
 	
 	private void initUI()
