@@ -4,15 +4,19 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial") //Gave weird warning, I'll check that out later
 public class Game extends JFrame 
 {
-	String title = "Pong: This Time It's Personal";
+	protected String title = "Pong: This Time It's Personal";
 	
+	//16:9 dimensions for jframe
+	
+	protected final int HEIGHT= 500;
+	protected final int WIDTH = 281;
 	public Game() {initUI();};
 	
 	private void initUI()
 	{
 		setTitle(title);
 		
-		setSize(500,281);
+		setSize(HEIGHT,WIDTH);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
