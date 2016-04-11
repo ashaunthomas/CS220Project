@@ -121,11 +121,11 @@ public class Game extends JFrame
 			ball.bounce('h');
 		}
 		
-		if((ball.getX() >= paddle1.getX() && ball.getX() <= paddle1.getX() + paddle1.getWidth()) && (ball.getY() >= paddle1.getY() && ball.getY() <= paddle1.getY() + paddle1.getLength())){
+		if((ball.getX() >= paddle1.getX() && ball.getX() <= paddle1.getX() + paddle1.getWidth()) && (ball.getY() + ball.getSize() >= paddle1.getY() && ball.getY() <= paddle1.getY() + paddle1.getLength())){
 			ball.bounce('v');
 		}
 		
-		if((ball.getX() + ball.getSize() >= paddle2.getX() && ball.getX() + ball.getSize() <= paddle2.getX() + paddle2.getWidth()) && (ball.getY() >= paddle2.getY() && ball.getY() <= paddle2.getY() + paddle2.getLength())){
+		if((ball.getX() + ball.getSize() >= paddle2.getX() && ball.getX() + ball.getSize() <= paddle2.getX() + paddle2.getWidth()) && (ball.getY() + ball.getSize() >= paddle2.getY() && ball.getY() <= paddle2.getY() + paddle2.getLength())){
 			ball.bounce('v');
 		}
 		

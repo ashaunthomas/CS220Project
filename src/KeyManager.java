@@ -20,7 +20,7 @@ public class KeyManager implements KeyListener{
 		case 2:
 			switch(key){
 			case 32:
-				main.ball.setVelocity(5);
+				main.ball.setVelocity(7);
 				main.ball.setTheta(Math.random() * 2 * Math.PI);
 				main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
 				main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
