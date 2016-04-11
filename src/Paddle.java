@@ -1,74 +1,98 @@
 
 public class Paddle implements PaddleInterface{
-	int x,y,id,length;
+	private int x,y;
+	private int id, thickness;
+	private int length, width;
+	private int velocity;
 	Game main;
 	
-	public Paddle(int x, int id, Game main){
+	public Paddle(int x, int length, int width, int id, Game main){
 		this.main = main;
 		setX(x);
-		setY((main.getHeight()/2)-(length/2));
-		setID(id);
 		setLength(length);
+		setWidth(width);
+		setY((main.getHeight()/2)-(getLength()/2));
+		setID(id);
+		setVelocity(4);
 	}
-	public void MoveUp() {
-		// TODO Auto-generated method stub
-		
+	public void moveUp() {
+		setY(getY()-getVelocity());
 	}
-	public void MoveDown() {
-		// TODO Auto-generated method stub
-		
+	
+	public void moveDown() {
+		setY(getY()+getVelocity());
 	}
-	public boolean setX(int x) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void setX(int x) {
+		this.x = x;
 	}
-	public boolean setY(int y) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void setY(int y) {
+		this.y = y;
 	}
+	
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
-	public int setY() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public int getY() {
+		return y;
 	}
-	public void Bump() {
+	
+	public void bump() {
 		// TODO Auto-generated method stub
-		
 	}
+	
 	public boolean hasPowerUp() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 	public void setLength(int length) {
 		this.length = length;
-		
 	}
+	
 	public int getLength() {
-		// TODO Auto-generated method stub
-		return 0;
+		return length;
 	}
+	
 	public void setRotation() {
 		// TODO Auto-generated method stub
 		
 	}
-	public void RotateRight() {
+	
+	public void rotateRight() {
 		// TODO Auto-generated method stub
 		
 	}
-	public void RotateLeft() {
+	
+	public void rotateLeft() {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	public int getRotation() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	public void setLength() {
-		// TODO Auto-generated method stub
-		
+	
+	public int getVelocity() {
+		return velocity;
+	}
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
+	}
+	public int getID() {
+		return id;
+	}
+	public void setID(int id) {
+		this.id = id;
+	}
+	public int getWidth() {
+		return width;
+	}
+	private void setWidth(int width) {
+		this.width = width;
 	}
 		
 	

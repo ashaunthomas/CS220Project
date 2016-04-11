@@ -1,19 +1,22 @@
 
 public interface PaddleInterface {
-	void MoveUp();
-	void MoveDown();
-	boolean setX(int x);
-	boolean setY(int y);
+	void moveUp();
+	void moveDown();
+	void setX(int x);
+	void setY(int y);
 	int getX();
-	int setY();
-	void Bump();
+	int getY();
+	void bump();
 	boolean hasPowerUp();
-	void setLength();
+	void setLength(int length);
 	int getLength();
 	void setRotation();
-	void RotateRight();
-	void RotateLeft();
+	void rotateRight();
+	void rotateLeft();
 	int getRotation();
+	void setID(int id);
+	int getID();
+	int getWidth();
 	
 	
 }

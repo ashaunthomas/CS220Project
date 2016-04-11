@@ -2,10 +2,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener{
+	private Game main;
 	private boolean[] keyPressed = new boolean[256];
 	
-	public KeyManager()
+	public KeyManager(Game main)
 	{
+		this.main = main;
 		for(boolean key: keyPressed)
 		{
 			key = false;
@@ -14,7 +16,16 @@ public class KeyManager implements KeyListener{
 	
 	public void recieveKey(int key)
 	{
-		
+		switch(main.getGameState()){
+		case 2:
+			switch(key){
+			case 32:
+				main.ball.setVelocity(5);
+				main.ball.setTheta(Math.random() * 2 * Math.PI);
+				main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
+				main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
+			}
+		}
 	}
 	
 	public void recieveKeyRelease(int key)
