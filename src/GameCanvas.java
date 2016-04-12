@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+
 public class GameCanvas extends JPanel{
 	private Game main;
 	public Animator animate;

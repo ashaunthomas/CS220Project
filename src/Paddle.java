@@ -1,10 +1,11 @@
 
 public class Paddle implements PaddleInterface{
-	private int x,y;
-	private int id, thickness;
-	private int length, width;
+	protected int x,y;
+	protected int id, thickness;
+	protected int length, width;
 	private int velocity;
 	Game main;
+	
 	
 	public Paddle(int x, int length, int width, int id, Game main){
 		this.main = main;
@@ -15,6 +16,8 @@ public class Paddle implements PaddleInterface{
 		setID(id);
 		setVelocity(4);
 	}
+	
+	
 	public void moveUp() {
 		setY(getY()-getVelocity());
 	}
