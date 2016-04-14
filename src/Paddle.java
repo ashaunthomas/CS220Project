@@ -3,6 +3,7 @@ public class Paddle implements PaddleInterface{
 	protected int x,y;
 	protected int id, thickness;
 	protected int length, width;
+	protected int score;
 	private int velocity;
 	Game main;
 	
@@ -40,6 +41,18 @@ public class Paddle implements PaddleInterface{
 	
 	public int getY() {
 		return y;
+	}
+	
+	public int getScore(){
+		return score;
+	} 
+	
+	public void setScore(int score){
+		this.score=score;
+	}
+	
+	public void hasScored(){
+		score++;
 	}
 	
 	public void bump() {
