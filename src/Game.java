@@ -53,6 +53,7 @@ public class Game extends JFrame
 
 	private void update(){
 		collision();
+		score();
 		movement();
 		panel.repaint();
 	}
@@ -130,7 +131,15 @@ public class Game extends JFrame
 		}
 		
 	}
-	
+		//scoring and returning
+	private void score(){
+		if(ball.getX() > 500){
+			ball.hasScored(paddle1);
+		}
+		if (ball.getX() < 0){
+			ball.hasScored(paddle2);
+		}
+	}
 	//blah
 	
 	public int getHeight(){
