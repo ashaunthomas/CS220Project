@@ -16,10 +16,12 @@ public class Animator {
 	private Game main;
 	private Graphics g;
 	
-	private BufferedImage[] rain = new BufferedImage[8];
+	private BufferedImage[] rain;
 	private int rainTicker = 0;
 	private int rainTimer = 3;
 	private BufferedImage currentRainFrame;
+	private BufferedImage[] clouds;
+	private Cloud[] foreClouds, aftClouds;
 	
 	
 	public Animator(GameCanvas panel, Game main, Graphics g2d)
@@ -27,12 +29,11 @@ public class Animator {
 		this.panel = panel;
 		this.main = main;
 		this.g = g2d;
-		loadTitleScreenRain();
+		loadTitleScreenAssets();
 	}
 	
 	public void titleScreen()
 	{
-		
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,main.getWidth(),main.getHeight());
 		
@@ -43,8 +44,18 @@ public class Animator {
 		if(rainTicker >= (7*rainTimer)+(rainTimer-1))
 			rainTicker = 0;
 		
+		for(Cloud cloud: aftClouds){
+			g.drawImage(cloud.getImage(), cloud.getX(), cloud.getY(), null);
+			cloud.move();
+		}
+		for(Cloud cloud: foreClouds){
+			g.drawImage(cloud.getImage(), cloud.getX(), cloud.getY(), null);
+			cloud.move();
+		}
+		
 		g.setColor(Color.WHITE);
 		g.drawString("Pong", main.WIDTH_MIDPOINT - 10, main.HEIGHT_MIDPOINT);
+		
 		
 	}
 	
@@ -68,7 +79,8 @@ public class Animator {
         g.fillOval(main.ball.getX(), main.ball.getY(), main.ball.getSize(), main.ball.getSize());
 	}
 	
-	private void loadTitleScreenRain(){
+	private void loadTitleScreenAssets(){
+		rain = new BufferedImage[8];
 		for(int i = 0; i < 8; i++){
 			try {
 				rain[i] = ImageIO.read(new File("RainFrames\\RainFrame" + i + ".png"));
@@ -78,7 +90,41 @@ public class Animator {
 			}
 		}
 		currentRainFrame = rain[0];
+		
+		clouds = new BufferedImage[5];
+		for(int i = 0; i < 5; i++){
+			try {
+				clouds[i] = ImageIO.read(new File("RainClouds\\RainCloud" + i + ".png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int numOfClouds = 6;
+		foreClouds = new Cloud[numOfClouds];
+		int cloudSpaceCounter = 0;
+		for(Cloud cloud: foreClouds){
+			cloud = new Cloud(main.getWidth());
+			int intermediary = (int) Math.floor((Math.random())*5);
+			cloud.setImage(clouds[intermediary == 5?4:intermediary]);
+			cloud.setX((((main.getWidth()+cloud.getWidth())/numOfClouds)*cloudSpaceCounter)-(cloud.getWidth()/2));
+			cloud.setY(-90);
+			cloud.setSpeed(2);
+			foreClouds[cloudSpaceCounter] = cloud;
+			cloudSpaceCounter++;
+		}
+
+		aftClouds = new Cloud[numOfClouds];
+		cloudSpaceCounter = 0;
+		for(Cloud cloud: aftClouds){
+			cloud = new Cloud(main.getWidth());
+			int intermediary = (int) Math.floor((Math.random())*5);
+			cloud.setImage(clouds[intermediary == 5?4:intermediary]);
+			cloud.setX((((main.getWidth()+cloud.getWidth())/numOfClouds)*cloudSpaceCounter)-(cloud.getWidth()/2));
+			cloud.setY(-60);
+			aftClouds[cloudSpaceCounter] = cloud;
+			cloudSpaceCounter++;
+		}
 	}
-	
 }
 
