@@ -17,7 +17,7 @@ public class KeyManager implements KeyListener{
 	
 	/**
 	 * The receive key method receives a specified key. The switch dictates which "screen" has the
-	 * specified key actions. If you need to add a key, use the  codes listed here: http://www.theasciicode.com.ar/
+	 * specified key actions. If you need to add a key, use the  codes listed here: http://monkeyfighter.com/images/games/keycodes.gif
 	 * game state legend:
 	 * 0 is title screen
 	 * 1 is paddle select
@@ -40,9 +40,7 @@ public class KeyManager implements KeyListener{
 		case 1:
 			switch(key)
 			{
-				//having problems with this value. It needs to be the numpad 0 
-				//TODO
-				case 60:
+				case 96:
 					player1HasChosen = true;
 					main.setGameState(2);
 					break;
