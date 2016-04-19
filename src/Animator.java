@@ -18,6 +18,8 @@ public class Animator {
 	
 	private BufferedImage[] rain = new BufferedImage[8];
 	private int rainTicker = 0;
+	private int rainTimer = 3;
+	private BufferedImage currentRainFrame;
 	
 	
 	public Animator(GameCanvas panel, Game main, Graphics g2d)
@@ -33,9 +35,14 @@ public class Animator {
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,main.getWidth(),main.getHeight());
-		g.drawImage(rain[rainTicker++], 0, 0, null);
-		if(rainTicker >= 8)
+		
+		if(rainTicker%rainTimer == 0)
+			currentRainFrame = rain[rainTicker/rainTimer];
+		g.drawImage(currentRainFrame, 0, 0, null);
+		rainTicker++;
+		if(rainTicker >= (7*rainTimer)+(rainTimer-1))
 			rainTicker = 0;
+		
 		g.setColor(Color.WHITE);
 		g.drawString("Pong", main.WIDTH_MIDPOINT - 10, main.HEIGHT_MIDPOINT);
 		
@@ -70,6 +77,7 @@ public class Animator {
 				e.printStackTrace();
 			}
 		}
+		currentRainFrame = rain[0];
 	}
 	
 }
