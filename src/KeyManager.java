@@ -4,7 +4,8 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener{
 	private Game main;
 	private boolean[] keyPressed = new boolean[256];
-	
+	boolean player1HasChosen = false;
+	boolean player2HasChosen = false;
 	public KeyManager(Game main)
 	{
 		this.main = main;
@@ -14,16 +15,48 @@ public class KeyManager implements KeyListener{
 		}
 	}
 	
+	/**
+	 * The receive key method receives a specified key. The switch dictates which "screen" has the
+	 * specified key actions. If you need to add a key, use the  codes listed here: http://www.theasciicode.com.ar/
+	 * game state legend:
+	 * 0 is title screen
+	 * 1 is paddle select
+	 * 2 is actual game
+	 * @param key The key pressed
+	 */ 
 	public void recieveKey(int key)
 	{
-		switch(main.getGameState()){
+		switch(main.getGameState())
+		{
+		case 0:
+			switch(key)
+			{
+				case 32:
+					main.setGameState(1);
+					break;
+				default:
+					break;
+ 			}
+		case 1:
+			switch(key)
+			{
+				//having problems with this value. It needs to be the numpad 0 
+				//TODO
+				case 60:
+					player1HasChosen = true;
+					main.setGameState(2);
+					break;
+			
+			}
 		case 2:
-			switch(key){
-			case 32:
-				main.ball.setVelocity(7);
-				main.ball.setTheta(Math.random() * 2 * Math.PI);
-				main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
-				main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
+			switch(key)
+			{
+				case 32:
+					main.ball.setVelocity(7);
+					main.ball.setTheta(Math.random() * 2 * Math.PI);
+					main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
+					main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
+					break;
 			}
 		}
 	}

@@ -12,7 +12,6 @@ public class Game extends JFrame
 	KeyManager manager;
 	Paddle paddle1, paddle2;
 	Ball ball;
-	
 	private int gameState;
 	/*
 	 * States:
@@ -30,25 +29,14 @@ public class Game extends JFrame
 	
 	protected final int HEIGHT= 281;
 	protected final int WIDTH = 500;
-	
+	protected final int HEIGHT_MIDPOINT = 140;
+	protected final int WIDTH_MIDPOINT = 250;
 	Game(){
 		initUI();
 		loadObjects();
+		runGameLoop();
+		setGameState(0);
 		
-		//set state to 2 so i could test pong game engine
-		setGameState(2);
-		
-		while(true){
-			
-			update();
-			
-			try {
-				Thread.sleep(15);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 	private void update(){
@@ -156,5 +144,21 @@ public class Game extends JFrame
 
 	public void setGameState(int gameState) {
 		this.gameState = gameState;
+	}
+	
+	public void runGameLoop()
+	{
+		while(true)
+		{
+					
+			update();
+			
+			try {
+				Thread.sleep(15);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

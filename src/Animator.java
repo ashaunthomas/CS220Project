@@ -2,12 +2,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Timer;
 
 public class Animator {
 	
 	private GameCanvas panel;
 	private Game main;
 	private Graphics g;
+	
+	
+	
 	
 	public Animator(GameCanvas panel, Game main, Graphics g2d)
 	{
@@ -16,13 +21,22 @@ public class Animator {
 		this.g = g2d;
 	}
 	
-	public void titleScreen(){
+	public void titleScreen()
+	{
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(0,0,main.getWidth(),main.getHeight());
+		g.setColor(Color.WHITE);
+		g.drawString("Pong", main.WIDTH_MIDPOINT - 10, main.HEIGHT_MIDPOINT);
 		
 	}
 	
 	public void selectPaddle()
 	{
-		
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, main.getWidth(), main.getHeight());
+		g.setColor(Color.WHITE);
+		g.drawString("Select Screen", main.WIDTH_MIDPOINT - 30, main.HEIGHT_MIDPOINT);
 	}
 	
 	public void mainGame()
@@ -38,3 +52,4 @@ public class Animator {
 	}
 	
 }
+
