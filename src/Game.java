@@ -94,9 +94,9 @@ public class Game extends JFrame
 			paddle1.moveUp();
 		if(manager.getIsPressing(83) && (paddle1.getY() + paddle1.getLength()) < this.getHeight())
 			paddle1.moveDown();
-		if(manager.getIsPressing(38) && paddle2.getY() > 0)
+		if(manager.getIsPressing(104) && paddle2.getY() > 0)
 			paddle2.moveUp();
-		if(manager.getIsPressing(40) && (paddle2.getY() + paddle2.getLength()) < this.getHeight())
+		if(manager.getIsPressing(101) && (paddle2.getY() + paddle2.getLength()) < this.getHeight())
 			paddle2.moveDown();
 		
 		ball.move();
