@@ -61,10 +61,10 @@ public class Animator {
 	
 	public void selectPaddle()
 	{
-		g.setColor(Color.RED);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, main.getWidth(), main.getHeight());
 		g.setColor(Color.WHITE);
-		g.drawString("Select Screen", main.WIDTH_MIDPOINT - 30, main.HEIGHT_MIDPOINT);
+		g.drawRoundRect(50, 50, 50, 50, 20, 20);
 	}
 	
 	public void mainGame()
