@@ -1,11 +1,14 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-public class KeyManager implements KeyListener{
+import java.util.Timer;
+import java.util.TimerTask;
+public class KeyManager implements KeyListener {
 	private Game main;
 	private boolean[] keyPressed = new boolean[256];
 	boolean player1HasChosen = false;
 	boolean player2HasChosen = false;
+	int lastKey = -1;
+	int currentKey;
 	public KeyManager(Game main)
 	{
 		this.main = main;
@@ -13,6 +16,7 @@ public class KeyManager implements KeyListener{
 		{
 			key = false;
 		}
+		
 	}
 	
 	/**
@@ -40,11 +44,17 @@ public class KeyManager implements KeyListener{
 		case 1:
 			switch(key)
 			{
-				case 96:
-					player1HasChosen = true;
-					main.setGameState(2);
-					break;
+			case 32:
+				player1HasChosen = true;
+				break;
 			
+			case 96:
+				player2HasChosen = true;
+				break;
+			}
+			if (player1HasChosen && player2HasChosen)
+			{
+				main.setGameState(2);
 			}
 		case 2:
 			switch(key)
@@ -66,11 +76,37 @@ public class KeyManager implements KeyListener{
 	
 	public void setIsPressing(boolean isPressing, int key)
 	{
-		this.keyPressed[key] = isPressing;
+		
+		/**
+		 * Problem: The number of recieveKeys is TOO DAMN HIGH! 
+		 * getIsPressing is weird...can you elaborate brosephiroph?
+		 * The print methods are strictly for us to check stuff
+		 * -A'Shaun 
+		 */
+		if (main.getState() == 1 || main.getState() == 0) //if title screen or character select screen
+		{
+			if(lastKey == key)
+			{
+				this.keyPressed[key] = !isPressing;
+				System.out.println("Same key");
+			}
+			else
+			{
+				lastKey = key;
+				this.keyPressed[key] = isPressing;
+				System.out.println(key + " is being pressed");
+			}
+		}
+		else 
+		{
+			this.keyPressed[key] = isPressing;
+		}
+		
 	}
 	
 	public boolean getIsPressing(int key)
 	{
+		System.out.println("getIsPressing Called");
 		return keyPressed[key];
 	}
 
@@ -92,4 +128,6 @@ public class KeyManager implements KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }
