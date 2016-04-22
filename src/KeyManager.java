@@ -76,37 +76,11 @@ public class KeyManager implements KeyListener {
 	
 	public void setIsPressing(boolean isPressing, int key)
 	{
-		
-		/**
-		 * Problem: The number of recieveKeys is TOO DAMN HIGH! 
-		 * getIsPressing is weird...can you elaborate brosephiroph?
-		 * The print methods are strictly for us to check stuff
-		 * -A'Shaun 
-		 */
-		if (main.getState() == 1 || main.getState() == 0) //if title screen or character select screen
-		{
-			if(lastKey == key)
-			{
-				this.keyPressed[key] = !isPressing;
-				System.out.println("Same key");
-			}
-			else
-			{
-				lastKey = key;
-				this.keyPressed[key] = isPressing;
-				System.out.println(key + " is being pressed");
-			}
-		}
-		else 
-		{
-			this.keyPressed[key] = isPressing;
-		}
-		
+		this.keyPressed[key] = isPressing;		
 	}
 	
 	public boolean getIsPressing(int key)
 	{
-		System.out.println("getIsPressing Called");
 		return keyPressed[key];
 	}
 
@@ -114,8 +88,8 @@ public class KeyManager implements KeyListener {
 		int key = e.getKeyCode();
 			if(!getIsPressing(key)){
 				recieveKey(key);
+				setIsPressing(true, key);
 		}
-		setIsPressing(true, key);
 	}
 
 	public void keyReleased(KeyEvent e) {
