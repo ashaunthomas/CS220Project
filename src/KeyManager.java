@@ -1,14 +1,11 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
-import java.util.TimerTask;
+
 public class KeyManager implements KeyListener {
 	private Game main;
 	private boolean[] keyPressed = new boolean[256];
-	boolean player1HasChosen = false;
-	boolean player2HasChosen = false;
-	int lastKey = -1;
-	int currentKey;
+	boolean player1HasChosen = false, player2HasChosen = false;
+	
 	public KeyManager(Game main)
 	{
 		this.main = main;
