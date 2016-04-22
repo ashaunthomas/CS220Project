@@ -1,5 +1,9 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class KeyManager implements KeyListener {
 	private Game main;
@@ -24,8 +28,11 @@ public class KeyManager implements KeyListener {
 	 * 1 is paddle select
 	 * 2 is actual game
 	 * @param key The key pressed
+	 * @throws IOException 
+	 * @throws UnsupportedAudioFileException 
+	 * @throws LineUnavailableException 
 	 */ 
-	public void recieveKey(int key)
+	public void recieveKey(int key) throws LineUnavailableException, UnsupportedAudioFileException, IOException
 	{
 		switch(main.getGameState())
 		{
@@ -35,14 +42,28 @@ public class KeyManager implements KeyListener {
 				case 32:
 					main.setGameState(1);
 					break;
+				case 77:
+					main.music.mute();
+					break;
+				case 78:
+					main.music.next();
+					break;
 				default:
 					break;
  			}
+			break;
 		case 1:
 			switch(key)
 			{
 			case 32:
 				player1HasChosen = true;
+				break;
+				
+			case 77:
+				main.music.mute();
+				break;
+			case 78:
+				main.music.next();
 				break;
 			
 			case 96:
@@ -53,6 +74,8 @@ public class KeyManager implements KeyListener {
 			{
 				main.setGameState(2);
 			}
+			
+			break;
 		case 2:
 			switch(key)
 			{
@@ -61,6 +84,13 @@ public class KeyManager implements KeyListener {
 					main.ball.setTheta(Math.random() * 2 * Math.PI);
 					main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
 					main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
+					break;
+					
+				case 77:
+					main.music.mute();
+					break;
+				case 78:
+					main.music.next();
 					break;
 			}
 		}
@@ -84,7 +114,18 @@ public class KeyManager implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 			if(!getIsPressing(key)){
-				recieveKey(key);
+				try {
+					recieveKey(key);
+				} catch (LineUnavailableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UnsupportedAudioFileException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				setIsPressing(true, key);
 		}
 	}

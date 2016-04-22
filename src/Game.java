@@ -2,7 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial") //Gave weird warning, I'll check that out later
@@ -10,6 +13,8 @@ public class Game extends JFrame
 {
 	private GameCanvas panel;
 	KeyManager manager;
+	MusicManager music;
+	
 	Paddle paddle1, paddle2;
 	Ball ball;
 	private int gameState;
@@ -31,6 +36,7 @@ public class Game extends JFrame
 	protected final int WIDTH = 500;
 	protected final int HEIGHT_MIDPOINT = 140;
 	protected final int WIDTH_MIDPOINT = 250;
+	
 	Game(){
 		initUI();
 		loadObjects();
@@ -53,6 +59,7 @@ public class Game extends JFrame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		manager = new KeyManager(this);
+		music = new MusicManager();
 		
 		panel = new GameCanvas();
 		panel.addKeyListener(manager);
@@ -72,6 +79,7 @@ public class Game extends JFrame
 		panel.repaint();
 		
 		this.setVisible(true);
+		music.play(0);
 	}
 	
 	private void loadObjects() {
