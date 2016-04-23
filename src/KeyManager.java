@@ -80,10 +80,8 @@ public class KeyManager implements KeyListener {
 			switch(key)
 			{
 				case 32:
-					main.ball.setVelocity(7);
-					main.ball.setTheta(Math.random() * 2 * Math.PI);
-					main.ball.setVectorI((int)(main.ball.getVelocity()*Math.cos(main.ball.getTheta())));
-					main.ball.setVectorJ((int)(main.ball.getVelocity()*Math.sin(main.ball.getTheta())));
+					main.ball.setVectorI(5*(Math.random()>0.5?1:-1));
+					main.ball.setVectorJ(5*(Math.random()>0.5?1:-1));
 					break;
 					
 				case 77:

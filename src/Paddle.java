@@ -15,7 +15,7 @@ public class Paddle implements PaddleInterface{
 		setWidth(width);
 		setY((main.getHeight()/2)-(getLength()/2));
 		setID(id);
-		setVelocity(4);
+		setVelocity(6);
 	}
 	
 	

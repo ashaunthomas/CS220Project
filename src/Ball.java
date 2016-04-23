@@ -4,8 +4,6 @@ public class Ball implements BallInterface{
 	private int x, y;
 	private int vectorI, vectorJ;
 	private int size;
-	private int velocity;
-	private double theta;
 	private int lastPlayerHit;
 	
 	public Ball(int size, Game main){
@@ -32,11 +30,14 @@ public class Ball implements BallInterface{
 		switch(surface){
 		case 'h':
 			setVectorJ(-getVectorJ());
-			//need to redetermine theta here
+			//forget theta. it is getting in the way of progress
 			break;
 		case 'v':
-			setVectorI(-getVectorI());
-			//and here
+			int plusQuantity = 0;
+			if(getVectorI()<main.paddle1.getWidth()){
+				plusQuantity = 1;
+			}
+			setVectorI(-getVectorI() + (-getVectorI()>0?plusQuantity:-plusQuantity));
 			break;
 		}
 		
@@ -75,22 +76,6 @@ public class Ball implements BallInterface{
 	
 	public void setSize(int size) {
 		this.size = size;
-	}
-	
-	public double getTheta() {
-		return theta;
-	}
-	
-	public void setTheta(double theta){
-		this.theta = theta;
-	}
-	
-	public int getVelocity() {
-		return velocity;
-	}
-	
-	public void setVelocity(int velocity) {
-		this.velocity = velocity;
 	}
 	
 	public int getLastPlayerHit() {
