@@ -25,10 +25,10 @@ public class Animator {
 	private BufferedImage[] pongavis;
 	
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
-	private int[] pongavi_position2 = {Game.WIDTH_MIDPOINT - 16, Game.HEIGHT_MIDPOINT};
-	private int[] pongavi_position3 = {Game.WIDTH_MIDPOINT + 16, Game.HEIGHT_MIDPOINT};
-	private int[] pongavi_position4 = {Game.WIDTH_MIDPOINT - 32, Game.HEIGHT_MIDPOINT + 32};
-	private int[] pongavi_position5 = {Game.WIDTH_MIDPOINT, Game.HEIGHT_MIDPOINT + 32};
+	private int[] pongavi_position2 = {Game.WIDTH_MIDPOINT - 16, Game.HEIGHT_MIDPOINT - 32};
+	private int[] pongavi_position3 = {Game.WIDTH_MIDPOINT + 16, Game.HEIGHT_MIDPOINT - 32};
+	private int[] pongavi_position4 = {Game.WIDTH_MIDPOINT - 32, Game.HEIGHT_MIDPOINT};
+	private int[] pongavi_position5 = {Game.WIDTH_MIDPOINT, Game.HEIGHT_MIDPOINT};
 	
 	public Animator(GameCanvas panel, Game main, Graphics g2d)
 	{
@@ -72,13 +72,47 @@ public class Animator {
 		g.fillRect(0, 0, main.getWidth(), main.getHeight());
 		g.setColor(Color.WHITE);
 		
-		//work in progress. See
+		
 		g.drawImage(pongavis[0], pongavi_position1[0], pongavi_position1[1], null); //normal
 		g.drawImage(pongavis[1], pongavi_position2[0], pongavi_position2[1], null); //long
 		g.drawImage(pongavis[2], pongavi_position3[0], pongavi_position3[1], null); //short
 		g.drawImage(pongavis[3], pongavi_position4[0], pongavi_position4[1], null); //brick
 		g.drawImage(pongavis[4], pongavi_position5[0], pongavi_position5[1], null); //lucille
+		 
+		//selection logic
+		//case 0: Normal
+		//case 1: Large
+		//case 2: Small
+		//case 3: brick
+		//case 4: lucille
+		//TODO: what if both players are highlighting the same character?
+		//TODO: create player1 and playher2 border "highlighters"
+		//TODO: set up redborder, blueborder, and player1/player2 stuff.
+		//TODO: add geographical representations of paddle data when highlighted
+		switch(player1_decision)
+		{
+			case 0: //normal
+				g.drawImage(redBorder,pongavi_position1[0], pongavi_position1[1],null);
+				break;
+			case 1: //large
+				g.drawImage(redBorder,pongavi_position2[0], pongavi_position2[1],null);
+				break;
+			case 2:
+				g.drawImage(redBorder,pongavi_position3[0], pongavi_position3[1],null);
+				break;
+			case 3:
+				g.drawImage(redBorder,pongavi_position4[0], pongavi_position4[1],null);
+				break;
+			case 4:
+				g.drawImage(redBorder, pongavi_position5[0], pongavi_position5,null);
+				break;
+			default:
+				System.out.println("Error in player one decision switch in Animator class");
+				break;
+		}
 		
+		
+		}
 		
 	}
 	
@@ -154,5 +188,7 @@ public class Animator {
 				e.printStackTrace();
 			}
 	}
+	
+	
 }
 
