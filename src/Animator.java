@@ -89,6 +89,7 @@ public class Animator {
 		//TODO: create player1 and playher2 border "highlighters"
 		//TODO: set up redborder, blueborder, and player1/player2 stuff.
 		//TODO: add geographical representations of paddle data when highlighted
+		/**
 		switch(player1_decision)
 		{
 			case 0: //normal
@@ -110,9 +111,7 @@ public class Animator {
 				System.out.println("Error in player one decision switch in Animator class");
 				break;
 		}
-		
-		
-		}
+		**/
 		
 	}
 	
