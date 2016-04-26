@@ -9,8 +9,8 @@ public class KeyManager implements KeyListener {
 	private Game main;
 	private boolean[] keyPressed = new boolean[256];
 	boolean player1HasChosen = false, player2HasChosen = false;
-	public Selector p1 = new Selector(main);
-	public Selector p2 = new Selector(main);
+	public Selector p1 = new Selector(main, 1);
+	public Selector p2 = new Selector(main, 2);
 	public KeyManager(Game main)
 	{
 		this.main = main;

@@ -36,9 +36,10 @@ public class Animator {
 	private Cloud[] foreClouds, aftClouds;
 	private BufferedImage[] pongavis;
 	private BufferedImage[] paddleScreenBackground;
+	
+	private int backgroundTicker = 0;
 	private BufferedImage currentBackground;
-	private Selector p1select = new Selector(main);
-	private Selector p2select = new Selector(main);
+	
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
 	private int[] pongavi_position2 = {Game.WIDTH_MIDPOINT - 16, Game.HEIGHT_MIDPOINT - 32};
 	private int[] pongavi_position3 = {Game.WIDTH_MIDPOINT + 16, Game.HEIGHT_MIDPOINT - 32};

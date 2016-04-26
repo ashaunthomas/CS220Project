@@ -10,10 +10,10 @@ public class Selector {
 	private BufferedImage image;
 	boolean hasChosen = false;
 	String description = "N/a";
-	public Selector(Game game)
+	public Selector(Game game, int initialState)
 	{
 		this.game = game;
-		selectorState = 1;
+		selectorState = initialState;
 	}
 	
 	public void setImage(BufferedImage image)
