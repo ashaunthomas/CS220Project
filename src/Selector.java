@@ -9,7 +9,7 @@ public class Selector {
 	private int selectorState;
 	private BufferedImage image;
 	boolean hasChosen = false;
-	
+	String description = "N/a";
 	public Selector(Game game)
 	{
 		this.game = game;
@@ -28,22 +28,27 @@ public class Selector {
 			case 1: //player is highlighting normal paddle
 				x = Game.WIDTH_MIDPOINT - 48;
 				y = Game.HEIGHT_MIDPOINT - 32;
+				description = "This is the normal paddle";
 				break;
-			case 2://player is highlighting 
+			case 2://player is highlighting small paddle
 				x = Game.WIDTH_MIDPOINT - 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
+				description = "This is the small paddle";
 				break;
-			case 3:
+			case 3: //player is highlighting long paddle
 				x = Game.WIDTH_MIDPOINT + 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
+				description = "This is the long paddle";
 				break;
-			case 4:
+			case 4: //player is highlighting brick paddle
 				x = Game.WIDTH_MIDPOINT - 32;
 				y = Game.HEIGHT_MIDPOINT;
+				description = "This is the brick paddle";
 				break;
-			case 5:
+			case 5: //player is highlighting lucille paddle
 				x = Game.WIDTH_MIDPOINT;
 				y = Game.HEIGHT_MIDPOINT;
+				description = "This is Lucille";
 				break;
 			default:
 				System.out.println("Error in setSelectorState method in Selector!");
@@ -98,5 +103,10 @@ public class Selector {
 	public int getSelectorState()
 	{
 		return selectorState;
+	}
+	
+	public String getDesc()
+	{
+		return description;
 	}
 }

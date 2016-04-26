@@ -15,11 +15,19 @@ public class Animator {
 	private GameCanvas panel;
 	private Game main;
 	private Graphics g;
+	
 	//keys we care about
 	int p1_moveUpKey = 87;
 	int p1_moveDownKey = 83;
 	int p2_moveUpKey = 38; 
 	int p2_moveDownKey = 40;
+	
+	private int desc_y =  0;
+	private int descWidth = 200;
+	
+	private int p1_x = 0;
+	
+	
 	private BufferedImage[] rain;
 	private int rainTicker = 0;
 	private int rainTimer = 3;
@@ -87,9 +95,13 @@ public class Animator {
 		g.drawImage(pongavis[4], pongavi_position5[0], pongavi_position5[1], null); //lucille
 		
 		g.drawImage(main.manager.p1.getImage(), main.manager.p1.getX(), main.manager.p1.getY(), null);
+		g.setColor(Color.BLUE);
+		g.drawRect(p1_x, desc_y, descWidth, main.getHeight());
+		g.setColor(Color.WHITE);
+		g.drawString(main.manager.p1.getDesc(), p1_x, desc_y+10);
 		g.drawImage(main.manager.p2.getImage(), main.manager.p2.getX(), main.manager.p2.getY(), null);
-		
-		
+		g.drawRect(main.getWidth() - descWidth,desc_y,descWidth,main.getHeight());
+		g.drawString(main.manager.p2.getDesc(),main.getWidth() - descWidth,desc_y+10);
 	}
 	
 	public void mainGame()
@@ -156,7 +168,7 @@ public class Animator {
 	{
 		pongavis = new BufferedImage[5];
 		paddleScreenBackground = new BufferedImage[20];
-		//load pong avatars
+		//load pong assets
 		for(int i = 1; i <= 5; i++)
 		{
 			try {
@@ -167,12 +179,14 @@ public class Animator {
 			}
 		}
 		
+		//Load Paddle Screen Select background
 		for(int i = 0; i < 20; i++)
 		{
 			try {
-				paddleScreenBackground[i] = ImageIO.read(new File("paddlescreenbg\\frame" + i)); 
+				paddleScreenBackground[i] = ImageIO.read(new File("paddlescreenbg\\frame" + i + ".gif")); 
 			} catch (IOException e) { e.printStackTrace();}
 		}
+		
 		//p1 border selector
 		try {
 			main.manager.p1.setImage(ImageIO.read(new File("Pongavis\\border_p1.png")));
