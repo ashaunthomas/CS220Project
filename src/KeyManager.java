@@ -65,7 +65,11 @@ public class KeyManager implements KeyListener {
 			case 78:
 				main.music.next();
 				break;
-			
+			case 87: //w
+				
+				break;
+			case 83: //d
+				break;
 			case 96:
 				player2HasChosen = true;
 				break;

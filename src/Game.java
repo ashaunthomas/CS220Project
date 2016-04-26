@@ -24,24 +24,25 @@ public class Game extends JFrame
 	 * 1 - Paddle Select
 	 * 2 - Main Game
 	 */
-	
-	
-	
-	
+	int screen_title = 0;
+	int screen_paddle_select = 1;
+	int screen_main = 3;	
+	int introSong = 0;
+	int p1_moveUpKey = 87;
+	int p1_moveDownKey = 83;
+	int p2_moveUpKey = 38;
+	int p2_moveDownKey = 40;
 	protected String title = "Pong: This Time It's Personal";
-	
-	//16:9 dimensions for jframe
-	
-	protected final int HEIGHT= 281;
-	protected final int WIDTH = 500;
-	protected final int HEIGHT_MIDPOINT = 140;
-	protected final int WIDTH_MIDPOINT = 250;
+	protected final int HEIGHT= 281; //16:9 dimensions for jframe
+	protected final int WIDTH = 500; //16:9 dimensions for jframe
+	public static final int HEIGHT_MIDPOINT = 140;
+	public static final int WIDTH_MIDPOINT = 250;
 	
 	Game(){
 		initUI();
 		loadObjects();
 		runGameLoop();
-		setGameState(0);
+		setGameState(screen_title);
 		
 	}
 
@@ -79,7 +80,7 @@ public class Game extends JFrame
 		panel.repaint();
 		
 		this.setVisible(true);
-		music.play(0);
+		music.play(introSong);
 	}
 	
 	private void loadObjects() {
@@ -98,18 +99,20 @@ public class Game extends JFrame
 	
 	private void movement(){
 		//paddle movement
-		if(manager.getIsPressing(87) && paddle1.getY() > 0)
+		if(manager.getIsPressing(p1_moveUpKey) && paddle1.getY() > 0)
 			paddle1.moveUp();
-		if(manager.getIsPressing(83) && (paddle1.getY() + paddle1.getLength()) < this.getHeight())
+		if(manager.getIsPressing(p1_moveDownKey) && (paddle1.getY() + paddle1.getLength()) < this.getHeight())
 			paddle1.moveDown();
-		if(manager.getIsPressing(104) && paddle2.getY() > 0)
+		if(manager.getIsPressing(p2_moveUpKey) && paddle2.getY() > 0)
 			paddle2.moveUp();
-		if(manager.getIsPressing(101) && (paddle2.getY() + paddle2.getLength()) < this.getHeight())
+		if(manager.getIsPressing(p2_moveDownKey) && (paddle2.getY() + paddle2.getLength()) < this.getHeight())
 			paddle2.moveDown();
 		
-		ball.move();
 		
 		//ball movement
+		ball.move();
+		
+		
 	}
 	
 	private void collision(){

@@ -23,7 +23,8 @@ public class Animator {
 	private BufferedImage[] clouds;
 	private Cloud[] foreClouds, aftClouds;
 	private BufferedImage[] pongavis;
-	
+	private Selector p1select = new Selector(main);
+	private Selector p2select = new Selector(main);
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
 	private int[] pongavi_position2 = {Game.WIDTH_MIDPOINT - 16, Game.HEIGHT_MIDPOINT - 32};
 	private int[] pongavi_position3 = {Game.WIDTH_MIDPOINT + 16, Game.HEIGHT_MIDPOINT - 32};
@@ -79,39 +80,9 @@ public class Animator {
 		g.drawImage(pongavis[3], pongavi_position4[0], pongavi_position4[1], null); //brick
 		g.drawImage(pongavis[4], pongavi_position5[0], pongavi_position5[1], null); //lucille
 		 
-		//selection logic
-		//case 0: Normal
-		//case 1: Large
-		//case 2: Small
-		//case 3: brick
-		//case 4: lucille
-		//TODO: what if both players are highlighting the same character?
-		//TODO: create player1 and playher2 border "highlighters"
-		//TODO: set up redborder, blueborder, and player1/player2 stuff.
-		//TODO: add geographical representations of paddle data when highlighted
-		/**
-		switch(player1_decision)
-		{
-			case 0: //normal
-				g.drawImage(redBorder,pongavi_position1[0], pongavi_position1[1],null);
-				break;
-			case 1: //large
-				g.drawImage(redBorder,pongavi_position2[0], pongavi_position2[1],null);
-				break;
-			case 2:
-				g.drawImage(redBorder,pongavi_position3[0], pongavi_position3[1],null);
-				break;
-			case 3:
-				g.drawImage(redBorder,pongavi_position4[0], pongavi_position4[1],null);
-				break;
-			case 4:
-				g.drawImage(redBorder, pongavi_position5[0], pongavi_position5,null);
-				break;
-			default:
-				System.out.println("Error in player one decision switch in Animator class");
-				break;
-		}
-		**/
+		g.drawImage(p1select.getImage(), p1select.getX(), p1select.getY(), null);
+		g.drawImage(p2select.getImage(), p2select.getX(), p2select.getY(), null);
+		
 		
 	}
 	
@@ -179,13 +150,28 @@ public class Animator {
 	{
 		pongavis = new BufferedImage[5];
 		
+		//load pong avatars
 		for(int i = 1; i <= 5; i++)
+		{
 			try {
 				pongavis[i - 1] = ImageIO.read(new File("Pongavis\\pongavi" + i + ".png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		
+		//p1 border selector
+		try {
+			p1select.setImage(ImageIO.read(new File("Pongavis\\border_p1.png")));
+		} catch(IOException e) { e.printStackTrace();} 
+		
+		//p2 border selector
+		try {
+			p2select.setImage(ImageIO.read(new File("Pongavis\\border_p2.png")));
+		} catch(IOException e) { e.printStackTrace();} 
+		p1select.setSelectorState(1);
+		p2select.setSelectorState(3);
 	}
 	
 	
