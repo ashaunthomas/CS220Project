@@ -13,6 +13,7 @@ public class Selector {
 	public Selector(Game game)
 	{
 		this.game = game;
+		selectorState = 1;
 	}
 	
 	public void setImage(BufferedImage image)
@@ -92,5 +93,10 @@ public class Selector {
 	public void setChosen(boolean hasChosen)
 	{
 		this.hasChosen = hasChosen;
+	}
+	
+	public int getSelectorState()
+	{
+		return selectorState;
 	}
 }

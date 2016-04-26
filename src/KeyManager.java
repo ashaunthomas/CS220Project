@@ -61,16 +61,49 @@ public class KeyManager implements KeyListener {
 				p1.setChosen(true);
 				break;
 			case 87: //w pressed
-				p1.moveUp();
+				if((p1.getSelectorState() - 1) == p2.getSelectorState() || (p1.getSelectorState() == 1 && p2.getSelectorState() == 5 ))
+				{
+					p1.moveUp();
+					p1.moveUp();
+				}
+				else
+				{
+					p1.moveUp();
+				}
 				break;
 			case 83: //d pressed
-				p1.moveDown();
+				if((p1.getSelectorState() + 1) == p2.getSelectorState() || (p1.getSelectorState() == 5 && p2.getSelectorState() == 1))
+				{
+					p1.moveDown();
+					p1.moveDown();
+				}
+				else
+				{
+					p1.moveDown();
+				}
 				break;
+				
 			case 38: //up arrow pressed
-				p2.moveUp();
+				if(p2.getSelectorState() - 1 == p1.getSelectorState() || (p2.getSelectorState() == 1 && p1.getSelectorState() == 5))
+				{
+					p2.moveUp();
+					p2.moveUp();
+				}
+				else
+				{
+					p2.moveUp();
+				}
 				break;
-			case 40:
-				p2.moveDown();
+			case 40: //down arrow pressed
+				if(p2.getSelectorState() + 1 == p1.getSelectorState() || (p2.getSelectorState() == 5 && p1.getSelectorState() == 1))
+				{
+					p2.moveDown();
+					p2.moveDown();
+				}
+				else
+				{
+					p2.moveDown();
+				}
 				break;
 			case 77:
 				main.music.mute();

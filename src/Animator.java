@@ -175,7 +175,7 @@ public class Animator {
 			main.manager.p2.setImage(ImageIO.read(new File("Pongavis\\border_p2.png")));
 		} catch(IOException e) { e.printStackTrace();} 
 		main.manager.p1.setSelectorState(1);
-		main.manager.p2.setSelectorState(3);
+		main.manager.p2.setSelectorState(2);
 	}
 	
 
