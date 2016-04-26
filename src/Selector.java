@@ -33,12 +33,12 @@ public class Selector {
 			case 2://player is highlighting small paddle
 				x = Game.WIDTH_MIDPOINT - 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
-				description = "This is the small paddle";
+				description = "This is the large paddle";
 				break;
 			case 3: //player is highlighting long paddle
 				x = Game.WIDTH_MIDPOINT + 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
-				description = "This is the long paddle";
+				description = "This is the small paddle";
 				break;
 			case 4: //player is highlighting brick paddle
 				x = Game.WIDTH_MIDPOINT - 32;
