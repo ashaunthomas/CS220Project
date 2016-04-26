@@ -27,6 +27,8 @@ public class Animator {
 	private BufferedImage[] clouds;
 	private Cloud[] foreClouds, aftClouds;
 	private BufferedImage[] pongavis;
+	private BufferedImage[] paddleScreenBackground;
+	private BufferedImage currentBackground;
 	private Selector p1select = new Selector(main);
 	private Selector p2select = new Selector(main);
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
@@ -153,18 +155,24 @@ public class Animator {
 	private void loadSelectScreenAssets()
 	{
 		pongavis = new BufferedImage[5];
-		
+		paddleScreenBackground = new BufferedImage[20];
 		//load pong avatars
 		for(int i = 1; i <= 5; i++)
 		{
 			try {
 				pongavis[i - 1] = ImageIO.read(new File("Pongavis\\pongavi" + i + ".png"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
 		
+		for(int i = 0; i < 20; i++)
+		{
+			try {
+				paddleScreenBackground[i] = ImageIO.read(new File("paddlescreenbg\\frame" + i)); 
+			} catch (IOException e) { e.printStackTrace();}
+		}
 		//p1 border selector
 		try {
 			main.manager.p1.setImage(ImageIO.read(new File("Pongavis\\border_p1.png")));
@@ -174,8 +182,13 @@ public class Animator {
 		try {
 			main.manager.p2.setImage(ImageIO.read(new File("Pongavis\\border_p2.png")));
 		} catch(IOException e) { e.printStackTrace();} 
+		
+		
+		//initialize selector states
 		main.manager.p1.setSelectorState(1);
 		main.manager.p2.setSelectorState(2);
+		
+		
 	}
 	
 
