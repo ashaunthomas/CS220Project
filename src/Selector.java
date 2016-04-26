@@ -8,6 +8,7 @@ public class Selector {
 	private int y;
 	private int selectorState;
 	private BufferedImage image;
+	boolean hasChosen = false;
 	
 	public Selector(Game game)
 	{
@@ -64,5 +65,32 @@ public class Selector {
 		return y;
 	}
 	
+	public void moveDown()
+	{
+		if(!hasChosen)
+		{
+			if(selectorState != 5)
+				selectorState++;
+			else
+				selectorState = 1;
+			setSelectorState(selectorState);
+		}
+	}
 	
+	public void moveUp()
+	{
+		if(!hasChosen)
+		{
+			if (selectorState != 1)
+				selectorState--;
+			else
+				selectorState = 5;
+			setSelectorState(selectorState);
+		}
+	}
+	
+	public void setChosen(boolean hasChosen)
+	{
+		this.hasChosen = hasChosen;
+	}
 }

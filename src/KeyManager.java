@@ -9,7 +9,8 @@ public class KeyManager implements KeyListener {
 	private Game main;
 	private boolean[] keyPressed = new boolean[256];
 	boolean player1HasChosen = false, player2HasChosen = false;
-	
+	public Selector p1 = new Selector(main);
+	public Selector p2 = new Selector(main);
 	public KeyManager(Game main)
 	{
 		this.main = main;
@@ -57,21 +58,29 @@ public class KeyManager implements KeyListener {
 			{
 			case 32:
 				player1HasChosen = true;
+				p1.setChosen(true);
 				break;
-				
+			case 87: //w pressed
+				p1.moveUp();
+				break;
+			case 83: //d pressed
+				p1.moveDown();
+				break;
+			case 38: //up arrow pressed
+				p2.moveUp();
+				break;
+			case 40:
+				p2.moveDown();
+				break;
 			case 77:
 				main.music.mute();
 				break;
 			case 78:
 				main.music.next();
 				break;
-			case 87: //w
-				
-				break;
-			case 83: //d
-				break;
 			case 96:
 				player2HasChosen = true;
+				p2.setChosen(true);
 				break;
 			}
 			if (player1HasChosen && player2HasChosen)

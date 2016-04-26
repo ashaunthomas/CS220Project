@@ -15,7 +15,11 @@ public class Animator {
 	private GameCanvas panel;
 	private Game main;
 	private Graphics g;
-	
+	//keys we care about
+	int p1_moveUpKey = 87;
+	int p1_moveDownKey = 83;
+	int p2_moveUpKey = 38; 
+	int p2_moveDownKey = 40;
 	private BufferedImage[] rain;
 	private int rainTicker = 0;
 	private int rainTimer = 3;
@@ -62,7 +66,7 @@ public class Animator {
 		}
 		
 		g.setColor(Color.WHITE);
-		g.drawString("Pong", main.WIDTH_MIDPOINT - 10, main.HEIGHT_MIDPOINT);
+		g.drawString("Pong", Game.WIDTH_MIDPOINT - 10, Game.HEIGHT_MIDPOINT);
 		
 		
 	}
@@ -79,9 +83,9 @@ public class Animator {
 		g.drawImage(pongavis[2], pongavi_position3[0], pongavi_position3[1], null); //short
 		g.drawImage(pongavis[3], pongavi_position4[0], pongavi_position4[1], null); //brick
 		g.drawImage(pongavis[4], pongavi_position5[0], pongavi_position5[1], null); //lucille
-		 
-		g.drawImage(p1select.getImage(), p1select.getX(), p1select.getY(), null);
-		g.drawImage(p2select.getImage(), p2select.getX(), p2select.getY(), null);
+		
+		g.drawImage(main.manager.p1.getImage(), main.manager.p1.getX(), main.manager.p1.getY(), null);
+		g.drawImage(main.manager.p2.getImage(), main.manager.p2.getX(), main.manager.p2.getY(), null);
 		
 		
 	}
@@ -163,17 +167,17 @@ public class Animator {
 		
 		//p1 border selector
 		try {
-			p1select.setImage(ImageIO.read(new File("Pongavis\\border_p1.png")));
+			main.manager.p1.setImage(ImageIO.read(new File("Pongavis\\border_p1.png")));
 		} catch(IOException e) { e.printStackTrace();} 
 		
 		//p2 border selector
 		try {
-			p2select.setImage(ImageIO.read(new File("Pongavis\\border_p2.png")));
+			main.manager.p2.setImage(ImageIO.read(new File("Pongavis\\border_p2.png")));
 		} catch(IOException e) { e.printStackTrace();} 
-		p1select.setSelectorState(1);
-		p2select.setSelectorState(3);
+		main.manager.p1.setSelectorState(1);
+		main.manager.p2.setSelectorState(3);
 	}
 	
-	
+
 }
 

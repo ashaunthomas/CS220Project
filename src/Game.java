@@ -26,7 +26,7 @@ public class Game extends JFrame
 	 */
 	int screen_title = 0;
 	int screen_paddle_select = 1;
-	int screen_main = 3;	
+	int screen_main = 2;	
 	int introSong = 0;
 	int p1_moveUpKey = 87;
 	int p1_moveDownKey = 83;
