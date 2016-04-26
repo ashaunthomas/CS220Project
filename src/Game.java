@@ -30,8 +30,8 @@ public class Game extends JFrame
 	int introSong = 0;
 	int p1_moveUpKey = 87;
 	int p1_moveDownKey = 83;
-	int p2_moveUpKey = 38;
-	int p2_moveDownKey = 40;
+	int p2_moveUpKey = 104;
+	int p2_moveDownKey = 101;
 	protected String title = "Pong: This Time It's Personal";
 	protected final int HEIGHT= 281; //16:9 dimensions for jframe
 	protected final int WIDTH = 500; //16:9 dimensions for jframe
@@ -47,9 +47,11 @@ public class Game extends JFrame
 	}
 
 	private void update(){
-		collision();
-		score();
-		movement();
+		if(getGameState() == 2){
+			collision();
+			score();
+			movement();
+		}
 		panel.repaint();
 	}
 	

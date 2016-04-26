@@ -83,7 +83,7 @@ public class KeyManager implements KeyListener {
 				}
 				break;
 				
-			case 38: //up arrow pressed
+			case 104: //numpad 8 pressed
 				if(p2.getSelectorState() - 1 == p1.getSelectorState() || (p2.getSelectorState() == 1 && p1.getSelectorState() == 5))
 				{
 					p2.moveUp();
@@ -94,7 +94,7 @@ public class KeyManager implements KeyListener {
 					p2.moveUp();
 				}
 				break;
-			case 40: //down arrow pressed
+			case 101: //numpad 5 pressed
 				if(p2.getSelectorState() + 1 == p1.getSelectorState() || (p2.getSelectorState() == 5 && p1.getSelectorState() == 1))
 				{
 					p2.moveDown();
