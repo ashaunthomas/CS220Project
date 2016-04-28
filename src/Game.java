@@ -37,10 +37,10 @@ public class Game extends JFrame
 	protected final int WIDTH = 500; //16:9 dimensions for jframe
 	public static final int HEIGHT_MIDPOINT = 140;
 	public static final int WIDTH_MIDPOINT = 250;
+	public boolean objectsWereLoaded = false;
 	
 	Game(){
 		initUI();
-		loadObjects();
 		runGameLoop();
 		setGameState(screen_title);
 		
@@ -48,6 +48,11 @@ public class Game extends JFrame
 
 	private void update(){
 		if(getGameState() == 2){
+			if(!objectsWereLoaded)
+			{
+				loadObjects();
+				objectsWereLoaded = true;
+			}
 			collision();
 			score();
 			movement();
@@ -87,11 +92,59 @@ public class Game extends JFrame
 	
 	private void loadObjects() {
 		int distanceFromEdge = 20;
-		int paddleLength = 80;
 		int paddleWidth = 10;
 		
-		paddle1 = new Paddle(distanceFromEdge, paddleLength, paddleWidth, 1, this);
-		paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), paddleLength, paddleWidth, 2, this);
+		//p1 selection decision
+		switch(manager.p1.getSelectorState())
+		{
+			case 1: //Normal Paddle
+				paddle1 = new Paddle(distanceFromEdge, this);
+				break;
+			case 2: //Long Paddle
+				paddle1 = new LongPaddle(distanceFromEdge, this);
+				break;
+			case 3: //Short Paddle
+				paddle1 = new ShortPaddle(distanceFromEdge, this);
+				break;
+			case 4: //Brick Paddle
+				paddle1 = new Paddle(distanceFromEdge, this); 
+				break;
+			case 5: //Lucille Paddle
+				paddle1 = new Paddle(distanceFromEdge, this);
+				break;
+			default:
+				paddle1 = new Paddle(distanceFromEdge, this);
+				break;
+			
+		}
+		
+		//p2 selection decision
+		switch(manager.p2.getSelectorState())
+		{
+			case 1: //Normal Paddle
+				paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), this);
+				break;
+			case 2: //Long Paddle
+				paddle2 = new LongPaddle(WIDTH - (distanceFromEdge + paddleWidth), this);
+				break;
+			case 3: //Short Paddle
+				paddle2 = new ShortPaddle(WIDTH - (distanceFromEdge + paddleWidth), this);
+				break;
+			case 4: //Brick Paddle
+				paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), this);;
+				System.out.println("selection 4 was selected"); 
+				break;
+			case 5: //Lucille Paddle
+				paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), this);
+				System.out.println("Selection 5 was selected");
+				break;
+			default:
+				paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), this);
+				System.out.println("Paddle 2 load error");
+				break;
+			
+		}
+		
 		
 		int ballSize = 20;
 		

@@ -1,21 +1,18 @@
 
 public class Paddle implements PaddleInterface{
 	protected int x,y;
-	protected int id, thickness;
 	protected int length, width;
-	protected int score;
 	private int velocity;
 	Game main;
 	
 	
-	public Paddle(int x, int length, int width, int id, Game main){
+	public Paddle(int x, Game main){
 		this.main = main;
 		setX(x);
-		setLength(length);
-		setWidth(width);
-		setY((main.getHeight()/2)-(getLength()/2));
-		setID(id);
-		setVelocity(6);
+		setLength(80);
+		setWidth(10);
+		setY((main.getHeight()/2)-(getLength()/2)); 
+		setVelocity(4);
 	}
 	
 	
@@ -43,17 +40,6 @@ public class Paddle implements PaddleInterface{
 		return y;
 	}
 	
-	public int getScore(){
-		return score;
-	} 
-	
-	public void setScore(int score){
-		this.score=score;
-	}
-	
-	public void hasScored(){
-		score++;
-	}
 	
 	public void bump() {
 		// TODO Auto-generated method stub
@@ -72,38 +58,13 @@ public class Paddle implements PaddleInterface{
 		return length;
 	}
 	
-	public void setRotation() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void rotateRight() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void rotateLeft() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public int getRotation() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	public int getVelocity() {
 		return velocity;
 	}
 	public void setVelocity(int velocity) {
 		this.velocity = velocity;
 	}
-	public int getID() {
-		return id;
-	}
-	public void setID(int id) {
-		this.id = id;
-	}
+
 	public int getWidth() {
 		return width;
 	}

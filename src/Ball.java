@@ -50,7 +50,6 @@ public class Ball implements BallInterface{
 		setVectorI(0);
 		setVectorJ(0);
 		
-		paddle.hasScored();
 		
 	}
 	
