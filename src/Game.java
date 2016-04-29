@@ -107,7 +107,7 @@ public class Game extends JFrame
 				paddle1 = new ShortPaddle(distanceFromEdge, this);
 				break;
 			case 4: //Brick Paddle
-				paddle1 = new Paddle(distanceFromEdge, this); 
+				paddle1 = new BrickPaddle(distanceFromEdge, this); 
 				break;
 			case 5: //Lucille Paddle
 				paddle1 = new Paddle(distanceFromEdge, this);
@@ -131,7 +131,7 @@ public class Game extends JFrame
 				paddle2 = new ShortPaddle(WIDTH - (distanceFromEdge + paddleWidth), this);
 				break;
 			case 4: //Brick Paddle
-				paddle2 = new Paddle(WIDTH - (distanceFromEdge + paddleWidth), this);;
+				paddle2 = new BrickPaddle(WIDTH - (distanceFromEdge + paddleWidth), this);;
 				System.out.println("selection 4 was selected"); 
 				break;
 			case 5: //Lucille Paddle

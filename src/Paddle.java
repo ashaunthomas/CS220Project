@@ -68,7 +68,7 @@ public class Paddle implements PaddleInterface{
 	public int getWidth() {
 		return width;
 	}
-	private void setWidth(int width) {
+	protected void setWidth(int width) {
 		this.width = width;
 	}
 		
