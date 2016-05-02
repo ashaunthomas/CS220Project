@@ -7,6 +7,9 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
+//Track 0 citation:
+//Toby Fox, "Unite Synchronization", Homestuck Volume 8
+
 
 @SuppressWarnings("serial") //Gave weird warning, I'll check that out later
 public class Game extends JFrame 
