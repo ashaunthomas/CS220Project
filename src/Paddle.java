@@ -3,6 +3,8 @@ public class Paddle implements PaddleInterface{
 	protected int x,y;
 	protected int length, width;
 	private int velocity;
+	private Roulette roulette;
+	private boolean hasPowerUp;
 	Game main;
 	
 	
@@ -13,6 +15,7 @@ public class Paddle implements PaddleInterface{
 		setWidth(10);
 		setY((main.getHeight()/2)-(getLength()/2)); 
 		setVelocity(4);
+		roulette = new Roulette(main);
 	}
 	
 	
@@ -47,7 +50,11 @@ public class Paddle implements PaddleInterface{
 	
 	public boolean hasPowerUp() {
 		// TODO Auto-generated method stub
-		return false;
+		return hasPowerUp;
+	}
+	
+	public void toggleHasPowerUp(){
+		hasPowerUp = !hasPowerUp;
 	}
 	
 	public void setLength(int length) {
@@ -70,6 +77,10 @@ public class Paddle implements PaddleInterface{
 	}
 	protected void setWidth(int width) {
 		this.width = width;
+	}
+	
+	public Roulette getRoulette(){
+		return roulette;
 	}
 		
 	

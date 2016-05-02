@@ -115,6 +115,9 @@ public class Animator {
         g.fillRect(main.paddle2.getX(), main.paddle2.getY(), main.paddle2.getWidth(), main.paddle2.getLength());
         
         g.fillOval(main.ball.getX(), main.ball.getY(), main.ball.getSize(), main.ball.getSize());
+        
+        g.drawImage(main.paddle1.getRoulette().getImage(), 31, 5, null);
+        g.drawImage(main.paddle2.getRoulette().getImage(), main.getWidth()-(31+36), 5, null);
 	}
 	
 	private void loadTitleScreenAssets(){

@@ -167,6 +167,12 @@ public class Game extends JFrame
 		//ball movement
 		ball.move();
 		
+		//Roulette spin
+		if(paddle1.getRoulette().isRolling())
+			paddle1.getRoulette().advance();
+		if(paddle2.getRoulette().isRolling())
+			paddle2.getRoulette().advance();
+		
 		
 	}
 	

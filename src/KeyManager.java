@@ -136,6 +136,21 @@ public class KeyManager implements KeyListener {
 				case 78:
 					main.music.next();
 					break;
+				case 69:
+					if(!main.paddle1.getRoulette().isRolling()){
+						main.paddle1.getRoulette().roll();
+					}
+					else{
+						main.paddle1.getRoulette().stop();
+					}
+					break;
+				case 103:
+					if(!main.paddle2.getRoulette().isRolling()){
+						main.paddle2.getRoulette().roll();
+					}
+					else{
+						main.paddle2.getRoulette().stop();
+					}
 			}
 		}
 	}
