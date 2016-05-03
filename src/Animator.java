@@ -34,6 +34,7 @@ public class Animator {
 	private int rainTimer = 3;
 	private int fieldTicker = 0;
 	private int fieldTimer = 5;
+	private int fieldLightningTimer = 0;
 	private BufferedImage currentRainFrame;
 	private BufferedImage currentFieldFrame;
 	private BufferedImage scoreNumbers[];
@@ -90,12 +91,19 @@ public class Animator {
 		g.fillRect(0, 0, main.getWidth(), main.getHeight());
 		g.setColor(Color.WHITE);
 		
-		if(fieldTicker%fieldTimer == 0)
+		if(fieldTicker%fieldTimer == 0){
+			if(fieldTicker/fieldTimer == 5 && fieldLightningTimer != 0){
+				fieldTicker = 0;
+				fieldLightningTimer--;
+			}
 			currentFieldFrame = field[fieldTicker/fieldTimer];
+		}
 		g.drawImage(currentFieldFrame, 0, 0, null);
 		fieldTicker++;
-		if(fieldTicker >= (19*fieldTimer)+(fieldTimer-1))
+		if(fieldTicker >= (19*fieldTimer)+(fieldTimer-1)){
 			fieldTicker = 0;
+			fieldLightningTimer = 15;
+		}
 			
 		g.drawImage(pongavis[0], pongavi_position1[0], pongavi_position1[1], null); //normal
 		g.drawImage(pongavis[1], pongavi_position2[0], pongavi_position2[1], null); //long
