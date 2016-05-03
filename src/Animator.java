@@ -115,12 +115,19 @@ public class Animator {
 		
 		g.drawImage(main.manager.p1.getImage(), main.manager.p1.getX(), main.manager.p1.getY(), null);
 		g.setColor(Color.BLUE);
-		g.drawRect(p1_x, desc_y, descWidth, main.getHeight());
+		try {
+			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p1.getDesc() + ".png")), 0, 0, null);
+			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")), main.getWidth()-(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")).getWidth()), 0, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//g.drawRect(p1_x, desc_y, descWidth, main.getHeight());
 		g.setColor(Color.WHITE);
-		g.drawString(main.manager.p1.getDesc(), p1_x, desc_y+10);
+		//g.drawString(main.manager.p1.getDesc(), p1_x, desc_y+10);
 		g.drawImage(main.manager.p2.getImage(), main.manager.p2.getX(), main.manager.p2.getY(), null);
-		g.drawRect(main.getWidth() - descWidth,desc_y,descWidth,main.getHeight());
-		g.drawString(main.manager.p2.getDesc(),main.getWidth() - descWidth,desc_y+10);
+		//g.drawRect(main.getWidth() - descWidth,desc_y,descWidth,main.getHeight());
+		//g.drawString(main.manager.p2.getDesc(),main.getWidth() - descWidth,desc_y+10);
 	}
 	
 	public void mainGame()
@@ -145,7 +152,7 @@ public class Animator {
 	
 	private void loadTitleScreenAssets(){
 		try {
-			title = ImageIO.read(new File("Title.png"));
+			title = ImageIO.read(new File("Strings\\Title.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

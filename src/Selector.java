@@ -28,27 +28,27 @@ public class Selector {
 			case 1: //player is highlighting normal paddle
 				x = Game.WIDTH_MIDPOINT - 48;
 				y = Game.HEIGHT_MIDPOINT - 32;
-				description = "This is the normal paddle";
+				description = "Norman";
 				break;
 			case 2://player is highlighting small paddle
 				x = Game.WIDTH_MIDPOINT - 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
-				description = "This is the large paddle";
+				description = "Slim";
 				break;
 			case 3: //player is highlighting long paddle
 				x = Game.WIDTH_MIDPOINT + 16;
 				y = Game.HEIGHT_MIDPOINT - 32;
-				description = "This is the small paddle";
+				description = "Tyrion";
 				break;
 			case 4: //player is highlighting brick paddle
 				x = Game.WIDTH_MIDPOINT - 32;
 				y = Game.HEIGHT_MIDPOINT;
-				description = "This is the brick paddle";
+				description = "TheBrick";
 				break;
 			case 5: //player is highlighting lucille paddle
 				x = Game.WIDTH_MIDPOINT;
 				y = Game.HEIGHT_MIDPOINT;
-				description = "This is Lucille";
+				description = "Lucille";
 				break;
 			default:
 				System.out.println("Error in setSelectorState method in Selector!");
