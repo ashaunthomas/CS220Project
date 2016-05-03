@@ -124,11 +124,13 @@ public class Animator {
         
         g.fillOval(main.ball.getX(), main.ball.getY(), main.ball.getSize(), main.ball.getSize());
         
+
         g.drawImage(main.paddle1.getRoulette().getImage(), 90, 5, null);
         g.drawImage(main.paddle2.getRoulette().getImage(), main.getWidth()-(90+36), 5, null);
         
         g.drawImage(scoreNumbers[main.paddle1.getScore()], 175, 10, null);
         g.drawImage(scoreNumbers[main.paddle2.getScore()], main.getWidth() - (175+32), 10, null);
+
 	}
 	
 	private void loadTitleScreenAssets(){
@@ -229,6 +231,7 @@ public class Animator {
 		
 		
 	}
+
 	
 
 }

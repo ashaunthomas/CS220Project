@@ -3,9 +3,9 @@ public class Paddle implements PaddleInterface{
 	protected int x,y;
 	protected int length, width;
 	private int velocity;
+	private int score;
 	private Roulette roulette;
 	private boolean hasPowerUp;
-	private int score;
 	Game main;
 	
 	
@@ -16,6 +16,7 @@ public class Paddle implements PaddleInterface{
 		setWidth(10);
 		setY((main.getHeight()/2)-(getLength()/2)); 
 		setVelocity(4);
+		score = 0;
 		roulette = new Roulette(main);
 	}
 	
@@ -43,7 +44,6 @@ public class Paddle implements PaddleInterface{
 	public int getY() {
 		return y;
 	}
-	
 	
 	public void bump() {
 		// TODO Auto-generated method stub
