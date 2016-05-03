@@ -41,6 +41,7 @@ public class Animator {
 	private BufferedImage[] clouds;
 	private Cloud[] foreClouds, aftClouds;
 	private BufferedImage[] pongavis;
+	private BufferedImage[] characters, names;
 	
 	
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
@@ -115,15 +116,13 @@ public class Animator {
 		
 		g.drawImage(main.manager.p1.getImage(), main.manager.p1.getX(), main.manager.p1.getY(), null);
 		g.setColor(Color.BLUE);
-		try {
-			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p1.getDesc() + ".png")), 0, 0, null);
-			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")), main.getWidth()-(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")).getWidth()), 0, null);
-			g.drawImage(ImageIO.read(new File("Headshots\\" + main.manager.p1.getDesc() + ".png")), 0, 64, null);
-			g.drawImage(ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")), main.getWidth(), 64, -(ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")).getWidth()), ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")).getHeight(), null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		g.drawImage(getName(main.manager.p1.getDesc()), 0, 0, null);
+		g.drawImage(getName(main.manager.p2.getDesc()), main.getWidth()-(getName(main.manager.p2.getDesc()).getWidth()), 0, null);
+		g.drawImage(getHeadshot(main.manager.p1.getDesc()), 0, 64, null);
+		g.drawImage(getHeadshot(main.manager.p2.getDesc()), main.getWidth(), 64, -getHeadshot(main.manager.p2.getDesc()).getWidth(), getHeadshot(main.manager.p2.getDesc()).getHeight(), null);
+		
+		
 		//g.drawRect(p1_x, desc_y, descWidth, main.getHeight());
 		g.setColor(Color.WHITE);
 		//g.drawString(main.manager.p1.getDesc(), p1_x, desc_y+10);
@@ -254,7 +253,66 @@ public class Animator {
 		main.manager.p1.setSelectorState(1);
 		main.manager.p2.setSelectorState(2);
 		
+		//character Profiles
+		characters = new BufferedImage[5];
+		try {
+			characters[0] = ImageIO.read(new File("Headshots\\Norman.png"));
+			characters[1] = ImageIO.read(new File("Headshots\\Slim.png"));
+			characters[2] = ImageIO.read(new File("Headshots\\Tyrion.png"));
+			characters[3] = ImageIO.read(new File("Headshots\\TheBrick.png"));
+			characters[4] = ImageIO.read(new File("Headshots\\Lucille.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		//character name strings
+		names = new BufferedImage[5];
+		try {
+			names[0] = ImageIO.read(new File("Strings\\Norman.png"));
+			names[1] = ImageIO.read(new File("Strings\\Slim.png"));
+			names[2] = ImageIO.read(new File("Strings\\Tyrion.png"));
+			names[3] = ImageIO.read(new File("Strings\\TheBrick.png"));
+			names[4] = ImageIO.read(new File("Strings\\Lucille.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private BufferedImage getHeadshot(String name){
+		switch(name){
+		case "Norman":
+			return characters[0];
+		case "Slim":
+			return characters[1];
+		case "Tyrion":
+			return characters[2];
+		case "TheBrick":
+			return characters[3];
+		case "Lucille":
+			return characters[4];
+		default:
+			return characters[1];
+		}
+	}
+	
+	private BufferedImage getName(String name){
+		switch(name){
+		case "Norman":
+			return names[0];
+		case "Slim":
+			return names[1];
+		case "Tyrion":
+			return names[2];
+		case "TheBrick":
+			return names[3];
+		case "Lucille":
+			return names[4];
+		default:
+			return names[1];
+		}
 	}
 
 	

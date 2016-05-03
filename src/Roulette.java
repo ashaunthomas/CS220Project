@@ -16,14 +16,12 @@ public class Roulette {
 			
 			if(nodeCount == 0){
 				this.setNext(this);
-				prevNode = this;
 				startNode = this;
 				currentNode = this;
 			}
 			else{
 				currentNode.setNext(this);
 				this.setNext(startNode);
-				prevNode = currentNode;
 				currentNode = this;
 			}
 			nodeCount++;
@@ -44,7 +42,7 @@ public class Roulette {
 	//end node definition
 	
 	private Game main;
-	private Node currentNode, startNode, prevNode;	
+	private Node currentNode, startNode;	
 	private int nodeCount = 0;
 	private int speed = 3, rollState = 0;
 	private boolean rolling, stopped;
@@ -69,7 +67,6 @@ public class Roulette {
 	
 	public void advance(){
 		if(rollState == 0 && !stopped){
-			prevNode = currentNode;
 			currentNode = currentNode.next();
 		}
 		if(rollState == 0 && stopped){
@@ -81,7 +78,7 @@ public class Roulette {
 	
 	public PowerUp stop(){
 		stopped = true;
-		return currentNode.getData();
+		return currentNode.next().getData();
 	}
 	
 	public BufferedImage getFrame(){
@@ -92,11 +89,11 @@ public class Roulette {
 		BufferedImage spinner = new BufferedImage(30, 30, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = spinner.createGraphics();
 		if(rollState != 0){
-			g2.drawImage(prevNode.getData().getIcon().getSubimage(0, rollState>29?1:rollState, 30, rollState>29?1:30-rollState), 0, 0, null);
-			g2.drawImage(currentNode.getData().getIcon().getSubimage(0, 0, 30, rollState), 0, 30-rollState, null);
+			g2.drawImage(currentNode.getData().getIcon().getSubimage(0, rollState>29?1:rollState, 30, rollState>29?1:30-rollState), 0, 0, null);
+			g2.drawImage(currentNode.next().getData().getIcon().getSubimage(0, 0, 30, rollState), 0, 30-rollState, null);
 		}
 		else{
-			g2.drawImage(currentNode.getData().getIcon(), 0, 0, null);
+			g2.drawImage(currentNode.next().getData().getIcon(), 0, 0, null);
 		}
 		g2.dispose();
 		return spinner;
