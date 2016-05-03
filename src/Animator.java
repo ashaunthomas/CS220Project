@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -118,6 +119,11 @@ public class Animator {
         
         g.drawImage(main.paddle1.getRoulette().getImage(), 31, 5, null);
         g.drawImage(main.paddle2.getRoulette().getImage(), main.getWidth()-(31+36), 5, null);
+        
+        //scoreboard 
+        
+        g.drawString("Player one's Score:"+main.paddle1.getScore(), main.getWidth()/2, 10);
+        g.drawString("Player two's Score"+main.paddle2.getScore(), main.getWidth()/2, 30);
 	}
 	
 	private void loadTitleScreenAssets(){
@@ -208,6 +214,7 @@ public class Animator {
 		
 		
 	}
+
 	
 
 }

@@ -49,6 +49,7 @@ public class Ball implements BallInterface{
 		setY((main.getHeight()-size)/2);
 		setVectorI(0);
 		setVectorJ(0);
+		paddle.Scores();
 		
 		
 	}
