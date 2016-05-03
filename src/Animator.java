@@ -27,7 +27,7 @@ public class Animator {
 	
 	private int p1_x = 0;
 	
-	
+	private BufferedImage title;
 	private BufferedImage[] rain;
 	private BufferedImage[] field;
 	private int rainTicker = 0;
@@ -80,7 +80,9 @@ public class Animator {
 		}
 		
 		g.setColor(Color.WHITE);
-		g.drawString("Pong", Game.WIDTH_MIDPOINT - 10, Game.HEIGHT_MIDPOINT);
+		g.drawImage(title, Game.WIDTH_MIDPOINT - 57, Game.HEIGHT_MIDPOINT-28, null);
+		g.drawString("-PRESS SPACE-", Game.WIDTH_MIDPOINT-36, Game.HEIGHT_MIDPOINT+20);
+		g.drawString("Music: Unite Synchronization by Toby Fox", main.getWidth()-227, main.getHeight()-5);
 		
 		
 	}
@@ -142,6 +144,12 @@ public class Animator {
 	}
 	
 	private void loadTitleScreenAssets(){
+		try {
+			title = ImageIO.read(new File("Title.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		scoreNumbers = new BufferedImage[10];
 		rain = new BufferedImage[8];
 		for(int i = 0; i < 8; i++){
