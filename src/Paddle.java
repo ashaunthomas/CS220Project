@@ -5,6 +5,7 @@ public class Paddle implements PaddleInterface{
 	private int velocity;
 	private Roulette roulette;
 	private boolean hasPowerUp;
+	private int score;
 	Game main;
 	
 	
@@ -81,6 +82,14 @@ public class Paddle implements PaddleInterface{
 	
 	public Roulette getRoulette(){
 		return roulette;
+	}
+	
+	public void score(){
+		score+=score==9?0:1;
+	}
+	
+	public int getScore(){
+		return score;
 	}
 		
 	

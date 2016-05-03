@@ -29,16 +29,18 @@ public class Animator {
 	
 	
 	private BufferedImage[] rain;
+	private BufferedImage[] field;
 	private int rainTicker = 0;
 	private int rainTimer = 3;
+	private int fieldTicker = 0;
+	private int fieldTimer = 5;
 	private BufferedImage currentRainFrame;
+	private BufferedImage currentFieldFrame;
+	private BufferedImage scoreNumbers[];
 	private BufferedImage[] clouds;
 	private Cloud[] foreClouds, aftClouds;
 	private BufferedImage[] pongavis;
-	private BufferedImage[] paddleScreenBackground;
 	
-	private int backgroundTicker = 0;
-	private BufferedImage currentBackground;
 	
 	private int[] pongavi_position1 = {Game.WIDTH_MIDPOINT - 48, Game.HEIGHT_MIDPOINT - 32};
 	private int[] pongavi_position2 = {Game.WIDTH_MIDPOINT - 16, Game.HEIGHT_MIDPOINT - 32};
@@ -88,7 +90,13 @@ public class Animator {
 		g.fillRect(0, 0, main.getWidth(), main.getHeight());
 		g.setColor(Color.WHITE);
 		
-		
+		if(fieldTicker%fieldTimer == 0)
+			currentFieldFrame = field[fieldTicker/fieldTimer];
+		g.drawImage(currentFieldFrame, 0, 0, null);
+		fieldTicker++;
+		if(fieldTicker >= (19*fieldTimer)+(fieldTimer-1))
+			fieldTicker = 0;
+			
 		g.drawImage(pongavis[0], pongavi_position1[0], pongavi_position1[1], null); //normal
 		g.drawImage(pongavis[1], pongavi_position2[0], pongavi_position2[1], null); //long
 		g.drawImage(pongavis[2], pongavi_position3[0], pongavi_position3[1], null); //short
@@ -116,11 +124,15 @@ public class Animator {
         
         g.fillOval(main.ball.getX(), main.ball.getY(), main.ball.getSize(), main.ball.getSize());
         
-        g.drawImage(main.paddle1.getRoulette().getImage(), 31, 5, null);
-        g.drawImage(main.paddle2.getRoulette().getImage(), main.getWidth()-(31+36), 5, null);
+        g.drawImage(main.paddle1.getRoulette().getImage(), 90, 5, null);
+        g.drawImage(main.paddle2.getRoulette().getImage(), main.getWidth()-(90+36), 5, null);
+        
+        g.drawImage(scoreNumbers[main.paddle1.getScore()], 175, 10, null);
+        g.drawImage(scoreNumbers[main.paddle2.getScore()], main.getWidth() - (175+32), 10, null);
 	}
 	
 	private void loadTitleScreenAssets(){
+		scoreNumbers = new BufferedImage[10];
 		rain = new BufferedImage[8];
 		for(int i = 0; i < 8; i++){
 			try {
@@ -166,12 +178,21 @@ public class Animator {
 			aftClouds[cloudSpaceCounter] = cloud;
 			cloudSpaceCounter++;
 		}
+		
+		for(int i = 0; i<10; i++){
+			try {
+				scoreNumbers[i] = ImageIO.read(new File("Numbers\\" + i + ".png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private void loadSelectScreenAssets()
 	{
 		pongavis = new BufferedImage[5];
-		paddleScreenBackground = new BufferedImage[20];
+		field = new BufferedImage[20];
 		//load pong assets
 		for(int i = 1; i <= 5; i++)
 		{
@@ -187,7 +208,7 @@ public class Animator {
 		for(int i = 0; i < 20; i++)
 		{
 			try {
-				paddleScreenBackground[i] = ImageIO.read(new File("paddlescreenbg\\frame" + i + ".gif")); 
+				field[i] = ImageIO.read(new File("FieldFrames\\frame" + i + ".png")); 
 			} catch (IOException e) { e.printStackTrace();}
 		}
 		

@@ -197,10 +197,12 @@ public class Game extends JFrame
 		//scoring and returning
 	private void score(){
 		if(ball.getX() > 500){
-			ball.hasScored(paddle1);
+			paddle1.score();
+			ball.hasScored();
 		}
 		if (ball.getX() < 0){
-			ball.hasScored(paddle2);
+			paddle2.score();
+			ball.hasScored();
 		}
 	}
 	//blah

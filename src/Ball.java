@@ -44,13 +44,11 @@ public class Ball implements BallInterface{
 		//this is what happends when the ball "scores"
 		//Parameter is the ball that has Scored
 	}
-	public void hasScored(Paddle paddle){
+	public void hasScored(){
 		setX((main.getWidth()-size)/2);
 		setY((main.getHeight()-size)/2);
 		setVectorI(0);
 		setVectorJ(0);
-		
-		
 	}
 	
 	public int getX() {
