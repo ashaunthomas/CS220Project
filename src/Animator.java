@@ -118,6 +118,8 @@ public class Animator {
 		try {
 			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p1.getDesc() + ".png")), 0, 0, null);
 			g.drawImage(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")), main.getWidth()-(ImageIO.read(new File("Strings\\" + main.manager.p2.getDesc() + ".png")).getWidth()), 0, null);
+			g.drawImage(ImageIO.read(new File("Headshots\\" + main.manager.p1.getDesc() + ".png")), 0, 64, null);
+			g.drawImage(ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")), main.getWidth(), 64, -(ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")).getWidth()), ImageIO.read(new File("Headshots\\" + main.manager.p2.getDesc() + ".png")).getHeight(), null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
