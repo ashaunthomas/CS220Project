@@ -1,9 +1,13 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
@@ -253,7 +257,7 @@ public class Game extends JFrame
 	public void powerSleeper(){
 
 		if (time>sleepTime){
-			
+			powUp.Spawn();
 			reset();
 		}
 	}

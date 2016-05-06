@@ -148,6 +148,8 @@ public class Animator {
         
         g.drawImage(scoreNumbers[main.paddle1.getScore()], 175, 10, null);
         g.drawImage(scoreNumbers[main.paddle2.getScore()], main.getWidth() - (175+32), 10, null);
+      
+        g.drawImage(main.powUp.getRand(),main.powUp.getX(),main.powUp.getY(),null);
 
 	}
 	
