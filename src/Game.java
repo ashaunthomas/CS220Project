@@ -3,7 +3,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.io.IOException;
-
+import java.util.Random;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
@@ -18,8 +18,11 @@ public class Game extends JFrame
 	KeyManager manager;
 	MusicManager music;
 	
+	Random r = new Random();
+	
 	Paddle paddle1, paddle2;
 	Ball ball;
+	PowerUp powUp;
 	private int gameState;
 	/*
 	 * States:
@@ -35,6 +38,7 @@ public class Game extends JFrame
 	int p1_moveDownKey = 83;
 	int p2_moveUpKey = 104;
 	int p2_moveDownKey = 101;
+	int time,sleepTime;
 	protected String title = "Pong: This Time It's Personal";
 	protected final int HEIGHT= 281; //16:9 dimensions for jframe
 	protected final int WIDTH = 500; //16:9 dimensions for jframe
@@ -46,6 +50,7 @@ public class Game extends JFrame
 		initUI();
 		runGameLoop();
 		setGameState(screen_title);
+		setTime(0);
 		
 	}
 
@@ -59,6 +64,8 @@ public class Game extends JFrame
 			collision();
 			score();
 			movement();
+			count();
+			powerSleeper();
 		}
 		panel.repaint();
 	}
@@ -121,6 +128,7 @@ public class Game extends JFrame
 			
 		}
 		
+		
 		//p2 selection decision
 		switch(manager.p2.getSelectorState())
 		{
@@ -152,6 +160,7 @@ public class Game extends JFrame
 		int ballSize = 20;
 		
 		ball = new Ball(ballSize, this);
+		powUp = new PowerUp(0);
 		
 	}
 	
@@ -211,6 +220,7 @@ public class Game extends JFrame
 		return HEIGHT;
 	}
 	
+	
 	public int getWidth(){
 		return WIDTH;
 	}
@@ -222,6 +232,32 @@ public class Game extends JFrame
 	public void setGameState(int gameState) {
 		this.gameState = gameState;
 	}
+	
+	//resets the time count generates a new random number
+	public void reset(){
+		sleepTime=r.nextInt(500)+100;
+		setTime(0);
+
+	}
+	//counts every frame
+	public void count(){
+		time++;
+	}
+	public int getTime(){
+		return time;
+	}
+	public void setTime(int time){
+		this.time=time;
+	}
+	//checks if the power up is ready to spawn
+	public void powerSleeper(){
+
+		if (time>sleepTime){
+			
+			reset();
+		}
+	}
+	
 	
 	public void runGameLoop()
 	{
